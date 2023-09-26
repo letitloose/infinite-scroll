@@ -1,0 +1,24 @@
+body{
+    background-color: lightblue;
+}
+.infinite-scroll-container {
+    background-color: lightblue;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.item {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: .25rem;
+    margin: 1em;
+    width: 20%;
+    line-height: 200px;
+    display: inline-block;  
+}
+
+.item.show {
+    opacity: 1;
+}
