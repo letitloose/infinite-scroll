@@ -11,6 +11,7 @@ const observer = new IntersectionObserver(entries => {
     threshold: .5
 })
 
+loadNewItems()
 const lastItemObserver = new IntersectionObserver(entries => {
     const lastItem = entries[0]
     if (!lastItem.isIntersecting) return
@@ -21,15 +22,10 @@ const lastItemObserver = new IntersectionObserver(entries => {
 
 lastItemObserver.observe(document.querySelector(".item:last-child"))
 
-items.forEach(item => {
-    item.style.backgroundColor = generatePastelColor();
-    observer.observe(item)
-})
-
 function loadNewItems() {
     for(let i = 0; i < 10; i++){
         const item = document.createElement("div")
-        item.textContent = "New Item  #" + (batch + i) 
+        item.textContent = "New Item  #" + (batch + i + 1) 
         item.classList.add("item")
         item.style.backgroundColor = generatePastelColor();
         observer.observe(item)
@@ -46,3 +42,4 @@ function generatePastelColor() {
     let rgb = (R << 16) + (G << 8) + B;
     return `#${rgb.toString(16)}`;      
 }
+
