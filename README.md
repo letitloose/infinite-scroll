@@ -1,6 +1,29 @@
 # infinite-scroll
 infinitely scrolling webpage project
 
+## How To Use ##
+
+    1. Download the latest release bundle and extract it.
+    2. Load the main.html file into your favorite browser.
+    3. Scroll infinitely through the Items.
+    4. Remember to take a break!
+
+## Summary ##
+Infinite scrolling is a User Interface design pattern well suited for browsing through a large or endless stream of items.  
+
+### Benefits ###
+1. **Reduce Interruptions**: It provides the user an uninterrupted stream of content and maintains their engagement without having to actively decide to load new content and wait for it to load.
+2. **Lowers Interaction**: Users don't have to actively decide to load more content by clicking a button. Also navigating back is easier because the content is all loaded already.
+3. **Well Suited to Mobile Devices**: Users are used to scrolling on mobile devices because of the small screen size.  Infinite scrolling allows them to use a natural motion to navigate.
+
+### Drawbacks ###
+1. **Refinding Items**: it can be tough to refind a specific item that you've already seen.  The user is required to remember where in the infinite scroll they saw the item and navigate back
+2. **Increases Page Load**: Items are added continuously and consume more and more computing resources.  This can particularly be a problem on mobile devices with limited bandwidth
+3. **Accessability Issues**: Users who are keyboard only can find scrolling via page up/down or tabbing to be more arduous in an infinite scrolling design as opposed to a more traditional pagination design.
+
+### Alternatives ###
+1. **Pagination**: Display a "page" of data at a time and have forward/back buttons to navigate to the next/previous page. Better for accessability and reducing page load.
+2. **Scrolling with Load More button**: This is a sort of hybrid approach.  You get the benefit of scrolling, while giving the user some agency on if they want to continue browsing.
 
 ## Research ##
 I began by wanting to learn more about infinite scrolling as a design pattern.  What UI/UX problems is it trying to solve?  I discovered this article by searching for  "infinite scroll best practices":
@@ -28,3 +51,19 @@ I started to implement my page exactly as described in the [Infinite Scroll - we
  - **CSS**: The css just bounds the content to 80% of the screen and utilizes inline-block display to display 4 columns of data, each alotted 20% of each line (plus margins).
 - **JS**: The javascript will run loadNewItems to get an initial block of 10 items.  These items will then be added to the "items observer" so that when they are on screen they will become visible.  The last item is added to the "last item observer" so that when it is on screen we will call loadNewItems again to produce 10 more items.  Rince, Repeat.
 
+## Example Questions ##
+
+1. **How would you approach this type of task working with a team of software engineers?**
+    I would approach it as collaboratively as possible,  starting with a meeting to discuss the assignment and how we would all approach it.  I would collectively want to research the best practices around the design and the alternatives.  As a group we would decide which to implement.
+
+    Implementation wise this is a small project with few files.  My preference would be to implement it in a pair/mob programming model, working on it together in real time.  If we were implementing an actual server to get the content, I would likely split into a client/server side teams with one team implementing the UI, and one team implementing the data retrieval API.
+2. **Compare and contrast an infinite scroll design versus alternatives and when you may choose one over another.**
+    I talked about this earlier and the main alternative is pagination.  Infinite scrolling is better suited to browsing and mobile, where the interaction is natural, and they are not looking for anything in particular.
+
+    Pagination is better for accessability and managing resource load, as only a specified number if items is available at one time.  This can hinder user engagement as they have to actively decide to load more data and wait for that to occur.
+3. **If this page were part of a web application accessible to a lot of users, how might it be improved to handle the additional load on it?**
+    This particular implementation doesn't really have load constraints on it as all of the processing is occuring for a single user in the browswer.  In a real web application the loadNewItems method would make a call to the server side to retrieve more data.  This is where you would run into load issues as you would need to wait for the server to respond.  
+
+    In that case I would implement the design in the [Infinite Scroll - web.dev](https://web.dev/patterns/web-vitals-patterns/infinite-scroll/infinite-scroll/) article, which contains a "Loading" message.  When the user is scrolling slowly enough for the items to return and render before being visible, they will never see this message.  If the users scrolls faster than the conten loads, they will be shown the "Loading" message, which will stop their scroll, and update to a "Show More" button when the content is ready to be shown.
+4. **Bugs happen!  How might you code to facilitate debugging when bugs occur in production and testing?**
+    In a development environment I would use the live debugging tools available in most modern browsers.  That provides the most control and observability into what is happening.  In a production/test environment I would likely utilize console logging to provide the observability I needed.  I would add console.log message about key pieces of data and states of the js code to get a clearer picture on what was actually happening in the code.
