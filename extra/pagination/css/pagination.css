@@ -6,8 +6,8 @@ body {
     background-color: lightblue;
     width: 80%;
     margin: auto;
-    padding: 10px;
     padding-top: 75px;
+    padding-bottom: 75px;
     text-align: center;
 }
 #item-list {
@@ -20,7 +20,7 @@ body {
     border-radius: .25rem;
     margin: 1em;
     width: 20%;
-    line-height: 200px;
+    line-height: 175px;
     display: inline-block;  
 }
 
@@ -47,6 +47,17 @@ body {
     cursor: pointer;
 }
 
+header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    background-color: rgb(130, 212, 241);
+    color: rgb(66, 66, 66);
+    text-align: center;
+}
+
 footer {
     position: fixed;
     left: 0;
@@ -59,13 +70,3 @@ footer {
     padding-top: 20px;
 }
 
-header {
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    height: 75px;
-    background-color: rgb(130, 212, 241);
-    color: rgb(66, 66, 66);
-    text-align: center;
-}
