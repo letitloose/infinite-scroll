@@ -67,3 +67,11 @@ I started to implement my page exactly as described in the [Infinite Scroll - we
     In that case I would implement the design in the [Infinite Scroll - web.dev](https://web.dev/patterns/web-vitals-patterns/infinite-scroll/infinite-scroll/) article, which contains a "Loading" message.  When the user is scrolling slowly enough for the items to return and render before being visible, they will never see this message.  If the users scrolls faster than the conten loads, they will be shown the "Loading" message, which will stop their scroll, and update to a "Show More" button when the content is ready to be shown.
 4. **Bugs happen!  How might you code to facilitate debugging when bugs occur in production and testing?**
     In a development environment I would use the live debugging tools available in most modern browsers.  That provides the most control and observability into what is happening.  In a production/test environment I would likely utilize console logging to provide the observability I needed.  I would add console.log message about key pieces of data and states of the js code to get a clearer picture on what was actually happening in the code.
+
+
+## Extras ##
+
+In the extra folders I implemented an infinite pagination page.  This design pattern is the primary alternative to scrolling for displaying large amounts of information.  Advantages include:
+
+1. **Continued access to header/footer **: since the page doesn't extend and scroll you can always see the header and footer.
+2. **Page load stays small and consistent **: since you are only ever loading a page of items at a time,  the resources used for the page stay managable and consistant,  instead of ever increasing like the scrolling pattern.
