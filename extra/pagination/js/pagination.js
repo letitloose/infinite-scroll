@@ -1,11 +1,8 @@
 const itemList = document.getElementById("item-list");
-const loadMoreButton = document.getElementById("load-more");
 const prevPageButton = document.getElementById("prev-page");
 const nextPageButton = document.getElementById("next-page");
-const pageButtonsContainer = document.getElementById("page-buttons");
-let currentPage = 1;
-let totalPages = 5; // Total number of pages (initially set to 5)
 const maxVisiblePages = 5; // Maximum number of visible page buttons
+let currentPage = 1;
 
 // Function to fetch and append items
 function fetchItems(page) {
@@ -43,11 +40,6 @@ function loadPage(page) {
     updateActiveButton()
 }
 
-function loadPageAndButtons(page) {
-    loadPage(page)
-    addPageButtons()
-}
-
 // Function to update pagination buttons
 function updateActiveButton() {
     const pageButtons = document.querySelectorAll(".page-button");
@@ -56,6 +48,11 @@ function updateActiveButton() {
     if (activeButton) {
         activeButton.classList.add("active");
     }
+}
+
+function loadPageAndButtons(page) {
+    loadPage(page)
+    addPageButtons()
 }
 
 // Add click event listeners to Next and Previous buttons
@@ -81,12 +78,6 @@ function addPageButtons() {
     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
     let endPage = startPage + maxVisiblePages - 1;
 
-    // // Ensure that there are enough pages to display maxVisiblePages
-    // if (endPage > totalPages) {
-    //     endPage = totalPages;
-    //     startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    // }
-
     for (let i = startPage; i <= endPage; i++) {
         const button = createPageButton(i);
         if (i === currentPage) {
@@ -100,16 +91,3 @@ function addPageButtons() {
 loadPage(1);
 addPageButtons();
 
-// Function to handle adding more page buttons as needed
-// function handlePagination() {
-//     if (currentPage > totalPages - Math.floor(maxVisiblePages / 2)) {
-//         totalPages += 5; // Add 5 more pages when reaching the end
-//         addPageButtons();
-//     }
-// }
-
-// // Add click event listener to Load More button
-// loadMoreButton.addEventListener("click", () => {
-//     loadPage(currentPage + 1);
-//     handlePagination();
-// });
