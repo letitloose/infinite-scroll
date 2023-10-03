@@ -71,7 +71,15 @@ I started to implement my page exactly as described in the [Infinite Scroll - we
 
 ## Extras ##
 
+### Pagination ###
 In the extra folders I implemented an infinite pagination page.  This design pattern is the primary alternative to scrolling for displaying large amounts of information.  Advantages include:
 
 1. **Continued access to header/footer**: since the page doesn't extend and scroll you can always see the header and footer.
 2. **Page load stays small and consistent**: since you are only ever loading a page of items at a time,  the resources used for the page stay managable and consistant,  instead of ever increasing like the scrolling pattern.
+
+### Hybrid ###
+In the extra folders I implemented an hybrid page. This page includes some of the advantages of both the infinite scrolling and the pagination patterns.  Advantages include:
+
+1. **Continued access to footer**: since the page doesn't expand before the footer is visible you can still access the footer.
+2. **More User Control**: The user gets to decide if and when they want to see more of the content
+3. **Sign Posting**: Each page now has a sign post in the infinite scroll which adds a visual cue of where the user is in the document.
